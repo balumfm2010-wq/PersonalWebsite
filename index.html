@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balanarasimhudu | Senior Accountant & Automation Expert</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1e3a8a;
+      --navy-dark:   #162d6e;
+      --navy-light:  #2d4faf;
+      --accent:      #3b82f6;
+      --accent-glow: #60a5fa;
+      --slate-bg:    #f8fafc;
+      --white:       #ffffff;
+      --text-dark:   #0f172a;
+      --text-mid:    #334155;
+      --text-light:  #64748b;
+      --border:      #e2e8f0;
+      --gold:        #f59e0b;
+      --font:        'Segoe UI', Arial, sans-serif;
+      --radius:      12px;
+      --shadow-sm:   0 2px 8px rgba(30,58,138,.08);
+      --shadow-md:   0 6px 24px rgba(30,58,138,.13);
+      --shadow-lg:   0 16px 48px rgba(30,58,138,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--slate-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--slate-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(30,58,138,.97);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      font-size: .95rem; font-weight: 700; color: var(--white);
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .nav-logo span { color: var(--accent-glow); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.78); text-decoration: none;
+      font-size: .85rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; transition: color .25s;
+      position: relative; padding-bottom: 3px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--accent-glow); transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(14,22,60,.93) 0%, rgba(30,58,138,.82) 60%, rgba(43,78,160,.70) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 40px,
+          rgba(255,255,255,.025) 40px, rgba(255,255,255,.025) 41px);
+      background-color: #0e163c;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 6% 80px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 480px; height: 480px; border-radius: 50%;
+      border: 1.5px solid rgba(96,165,250,.18); pointer-events: none;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: -80px; left: -80px;
+      width: 320px; height: 320px; border-radius: 50%;
+      border: 1px solid rgba(96,165,250,.12); pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2; max-width: 780px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(96,165,250,.15);
+      border: 1px solid rgba(96,165,250,.35);
+      color: var(--accent-glow);
+      font-size: .72rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; padding: .35rem 1rem;
+      border-radius: 99px; margin-bottom: 1.6rem;
+    }
+    .hero-name {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; color: var(--white);
+      letter-spacing: -.02em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .hero-name em {
+      font-style: normal;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,255,255,.72); font-weight: 400;
+      letter-spacing: .04em; margin-bottom: 2.4rem;
+    }
+    .hero-title strong { color: rgba(255,255,255,.92); font-weight: 600; }
+    .hero-divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      border-radius: 2px; margin: 0 auto 2.4rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-size: .9rem; font-weight: 600; letter-spacing: .04em;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      box-shadow: 0 4px 16px rgba(59,130,246,.4);
+    }
+    .btn-primary:hover {
+      background: #2563eb; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59,130,246,.5);
+    }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.45);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.8); transform: translateY(-2px);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 90px 6%; }
+    .section-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800; color: var(--navy);
+      letter-spacing: -.025em; margin-bottom: .8rem;
+    }
+    .section-subtitle {
+      font-size: 1rem; color: var(--text-light);
+      max-width: 560px; margin-bottom: 3rem;
+    }
+    .section-line {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--accent));
+      border-radius: 2px; margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-text p { color: var(--text-mid); font-size: 1rem; margin-bottom: 1.1rem; }
+    .about-text p strong { color: var(--navy); font-weight: 700; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .stat-card {
+      background: var(--slate-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem; text-align: center;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--navy);
+      line-height: 1; margin-bottom: .3rem;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-desc { font-size: .8rem; color: var(--text-light); font-weight: 500; }
+    .brand-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+    .chip {
+      background: var(--navy); color: var(--white);
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      padding: .35rem .9rem; border-radius: 99px;
+    }
+
+    /* ── TIMELINE ── */
+    #journey { background: var(--slate-bg); }
+    .timeline { position: relative; max-width: 780px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--navy), var(--accent), transparent);
+    }
+    .tl-item {
+      display: flex; gap: 2.5rem; padding-bottom: 2.8rem;
+      position: relative; animation: fadeUp .6s ease both;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      flex-shrink: 0; width: 58px; height: 58px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; font-weight: 800; color: var(--white);
+      letter-spacing: .04em; text-align: center; line-height: 1.2;
+      box-shadow: 0 0 0 4px var(--slate-bg), 0 0 0 6px rgba(30,58,138,.3);
+      position: relative; z-index: 1;
+    }
+    .tl-dot.lennox { background: linear-gradient(135deg, var(--navy), var(--accent)); }
+    .tl-content {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem; flex: 1;
+      box-shadow: var(--shadow-sm); transition: box-shadow .25s, transform .25s;
+    }
+    .tl-content:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+    .tl-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: .5rem; margin-bottom: .6rem;
+    }
+    .tl-role { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .tl-company { font-size: .82rem; font-weight: 600; color: var(--accent); }
+    .tl-period {
+      font-size: .75rem; font-weight: 600; color: var(--text-light);
+      background: var(--slate-bg); border: 1px solid var(--border);
+      padding: .2rem .7rem; border-radius: 99px; white-space: nowrap;
+    }
+    .tl-desc { font-size: .9rem; color: var(--text-mid); }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+    .tag {
+      font-size: .7rem; font-weight: 600;
+      background: rgba(30,58,138,.07); color: var(--navy);
+      padding: .2rem .6rem; border-radius: 4px;
+    }
+    .tl-item:nth-child(1) { animation-delay: .1s; }
+    .tl-item:nth-child(2) { animation-delay: .2s; }
+    .tl-item:nth-child(3) { animation-delay: .3s; }
+    .tl-item:nth-child(4) { animation-delay: .4s; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--slate-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.8rem;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--card-accent, linear-gradient(90deg, var(--navy), var(--accent)));
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .project-icon {
+      width: 48px; height: 48px; background: var(--navy);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem; margin-bottom: 1.1rem;
+    }
+    .project-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .project-card p { font-size: .9rem; color: var(--text-mid); margin-bottom: 1rem; }
+    .impact-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--navy), var(--accent));
+      color: var(--white); font-size: .75rem; font-weight: 700;
+      padding: .3rem .8rem; border-radius: 6px;
+    }
+
+    /* ── LEADERSHIP ── */
+    #leadership { background: var(--slate-bg); }
+    .leadership-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .leader-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem 1.6rem; text-align: center;
+      box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s;
+    }
+    .leader-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .leader-icon {
+      width: 72px; height: 72px; border-radius: 50%; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 16px rgba(30,58,138,.25);
+    }
+    .leader-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .leader-card p { font-size: .9rem; color: var(--text-mid); }
+    .leader-highlight {
+      display: inline-block; margin-top: .8rem;
+      font-size: .78rem; font-weight: 700; color: var(--accent);
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy); padding: 80px 6%;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 30px,
+        rgba(255,255,255,.025) 30px, rgba(255,255,255,.025) 31px);
+    }
+    .contact-inner { position: relative; z-index: 1; }
+    #contact .section-label { color: var(--accent-glow); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-subtitle { color: rgba(255,255,255,.65); margin: 0 auto 2.5rem; }
+    .contact-links {
+      display: flex; flex-wrap: wrap; gap: 1.2rem;
+      justify-content: center; margin-bottom: 3rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: .65rem;
+      background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.18);
+      color: var(--white); text-decoration: none;
+      padding: .85rem 1.6rem; border-radius: 10px;
+      font-size: .9rem; font-weight: 600;
+      transition: background .25s, border-color .25s, transform .2s;
+    }
+    .contact-link:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.45); transform: translateY(-3px);
+    }
+    .cl-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f1f52; padding: 1.5rem 6%;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: .8rem;
+    }
+    footer p { font-size: .8rem; color: rgba(255,255,255,.45); }
+    footer p strong { color: rgba(255,255,255,.72); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: .78rem; color: rgba(255,255,255,.45);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--accent-glow); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .timeline::before { left: 22px; }
+      .tl-dot { width: 46px; height: 46px; font-size: .58rem; }
+      .tl-item { gap: 1.5rem; }
+      section { padding: 60px 5%; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn { width: 220px; justify-content: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">B<span>.</span>Narasimhudu</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#projects">Impact</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">&#9670; Senior Finance Professional</div>
+      <h1 class="hero-name"><em>Balanarasimhudu</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-title">
+        <strong>Senior Accountant</strong> &amp; <strong>Automation Expert</strong><br>
+        Transforming financial operations through precision, leadership, and intelligent systems.
+      </p>
+      <div class="hero-btns">
+        <a href="#" class="btn btn-primary">&#8659;&nbsp; Download Resume</a>
+        <a href="#contact" class="btn btn-outline">&#9993;&nbsp; Let's Connect</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">From Ledgers<br>to Leadership</h2>
+        <div class="section-line"></div>
+        <p>
+          My journey began in the dynamic world of India's premier technology giants —
+          <strong>Infosys, TCS, and Capgemini</strong> — where I built the foundation of a career
+          defined by analytical rigour and operational excellence.
+        </p>
+        <p>
+          Over the years, I evolved from handling complex financial reconciliations to architecting
+          <strong>automated workflows and macro-driven reporting systems</strong> that cut processing
+          time dramatically and freed teams to focus on high-value strategy.
+        </p>
+        <p>
+          Today, at <strong>Lennox International</strong>, I lead financial operations with a mandate
+          to merge traditional accounting discipline with modern efficiency — turning month-end closes
+          from marathon events into streamlined, auditable processes.
+        </p>
+        <div class="brand-chips">
+          <span class="chip">Infosys</span>
+          <span class="chip">TCS</span>
+          <span class="chip">Capgemini</span>
+          <span class="chip">Lennox</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">12<span>+</span></div>
+          <div class="stat-desc">Years of Finance Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4</div>
+          <div class="stat-desc">Industry-Leading Employers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">60<span>%</span></div>
+          <div class="stat-desc">Reduction in Close Cycle</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">700<span>+</span></div>
+          <div class="stat-desc">Man-Hours Saved Annually</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <p class="section-label">Professional Journey</p>
+    <h2 class="section-title">Career Timeline</h2>
+    <div class="section-line"></div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot lennox">LNX</div>
+        <div class="tl-content">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Senior Accountant &amp; Automation Lead</div>
+              <div class="tl-company">Lennox International</div>
+            </div>
+            <span class="tl-period">2019 – Present</span>
+          </div>
+          <p class="tl-desc">
+            Spearheading financial reporting, audit readiness, and the rollout of macro-driven automation
+            frameworks. Transformed the month-end close from a 10-day grind into a 4-day precision operation.
+            Acts as the financial systems bridge between operations and executive leadership.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Financial Reporting</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Month-End Close</span>
+            <span class="tag">ERP Systems</span>
+            <span class="tag">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">CAP</div>
+        <div class="tl-content">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Finance Process Analyst</div>
+              <div class="tl-company">Capgemini</div>
+            </div>
+            <span class="tl-period">2016 – 2019</span>
+          </div>
+          <p class="tl-desc">
+            Managed end-to-end accounts payable and receivable cycles for global clients. Introduced
+            VBA macros that eliminated 15+ hours of weekly manual effort, improving accuracy and team efficiency.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">AP / AR</span>
+            <span class="tag">VBA Macros</span>
+            <span class="tag">Client Reporting</span>
+            <span class="tag">Process Optimization</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">TCS</div>
+        <div class="tl-content">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Associate Finance Consultant</div>
+              <div class="tl-company">Tata Consultancy Services (TCS)</div>
+            </div>
+            <span class="tl-period">2013 – 2016</span>
+          </div>
+          <p class="tl-desc">
+            Delivered financial reconciliation and variance analysis for Fortune 500 clients.
+            Contributed to the implementation of SAP-based reporting modules, reducing query
+            resolution time by 35%.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Reconciliation</span>
+            <span class="tag">SAP</span>
+            <span class="tag">Variance Analysis</span>
+            <span class="tag">Stakeholder Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">INFY</div>
+        <div class="tl-content">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Junior Accountant</div>
+              <div class="tl-company">Infosys BPM</div>
+            </div>
+            <span class="tl-period">2010 – 2013</span>
+          </div>
+          <p class="tl-desc">
+            Laid the professional groundwork in transaction processing, general ledger management, and
+            compliance reporting within a high-volume, fast-paced BPO environment. Recognised twice
+            for accuracy excellence across consecutive quarters.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">General Ledger</span>
+            <span class="tag">Transaction Processing</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">IFRS Standards</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects &amp; Impact</p>
+    <h2 class="section-title">Key Achievements</h2>
+    <p class="section-subtitle">Tangible results that define a career built on efficiency, accuracy, and innovation.</p>
+    <div class="section-line"></div>
+
+    <div class="projects-grid">
+
+      <div class="project-card" style="--card-accent: linear-gradient(90deg,#1e3a8a,#3b82f6);">
+        <div class="project-icon">&#9201;</div>
+        <h3>Accelerated Month-End Close</h3>
+        <p>
+          Redesigned the closing workflow at Lennox by eliminating redundant reconciliation steps,
+          automating journal entries, and building a real-time tracking dashboard — cutting the cycle
+          from 10 days to under 4 days, freeing capacity for strategic analysis.
+        </p>
+        <span class="impact-badge">&#8595; 60% Time Reduction</span>
+      </div>
+
+      <div class="project-card" style="--card-accent: linear-gradient(90deg,#0f766e,#14b8a6);">
+        <div class="project-icon" style="background:#0f766e;">&#9881;</div>
+        <h3>Custom VBA Macro Suite</h3>
+        <p>
+          Developed a library of Excel VBA macros at Capgemini to automate invoice matching, balance
+          sheet scheduling, and error-flag reporting — saving over 700 man-hours annually and reducing
+          human error by 90%.
+        </p>
+        <span class="impact-badge" style="background:linear-gradient(90deg,#0f766e,#14b8a6);">700+ Hours Saved / Year</span>
+      </div>
+
+      <div class="project-card" style="--card-accent: linear-gradient(90deg,#7c3aed,#a78bfa);">
+        <div class="project-icon" style="background:#7c3aed;">&#9733;</div>
+        <h3>Financial Reporting Excellence</h3>
+        <p>
+          Maintained a 99.8% accuracy rate across multi-entity financial reports over 5 years at Lennox.
+          Built standardised reporting templates adopted organisation-wide, enhancing audit readiness
+          and executive confidence.
+        </p>
+        <span class="impact-badge" style="background:linear-gradient(90deg,#7c3aed,#a78bfa);">99.8% Accuracy Rate</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <p class="section-label">Beyond the Balance Sheet</p>
+    <h2 class="section-title">Leadership &amp; Hobbies</h2>
+    <p class="section-subtitle">Discipline, endurance, and teamwork aren't just professional values — they're lived experiences.</p>
+    <div class="section-line"></div>
+
+    <div class="leadership-grid">
+
+      <div class="leader-card">
+        <div class="leader-icon">&#127939;</div>
+        <h3>Marathon Runner</h3>
+        <p>
+          Competing in long-distance running instilled relentless discipline and mental fortitude —
+          the same qualities that drive through complex audits and tight deadlines without losing focus or momentum.
+        </p>
+        <span class="leader-highlight">&#9679; Full Marathon Finisher</span>
+      </div>
+
+      <div class="leader-card">
+        <div class="leader-icon">&#127944;</div>
+        <h3>Hockey Team Player</h3>
+        <p>
+          As an active hockey player, the values of coordinated teamwork, rapid strategic decisions, and
+          supporting colleagues under pressure translate directly into how I lead and inspire finance teams.
+        </p>
+        <span class="leader-highlight">&#9679; Competitive Team Member</span>
+      </div>
+
+      <div class="leader-card">
+        <div class="leader-icon">&#128200;</div>
+        <h3>Mentorship &amp; Coaching</h3>
+        <p>
+          Actively mentoring junior accountants and analysts on automation best practices and reporting
+          standards — building a culture of continuous improvement and professional growth within the team.
+        </p>
+        <span class="leader-highlight">&#9679; 5+ Mentees Developed</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">
+        Whether you're exploring a collaboration, a leadership opportunity, or simply want to talk
+        finance and automation — the inbox is always open.
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/balanarasimhudu" target="_blank" rel="noopener" class="contact-link">
+          <div class="cl-icon">in</div>
+          LinkedIn Profile
+        </a>
+        <a href="mailto:balumfm2010@gmail.com" class="contact-link">
+          <div class="cl-icon">@</div>
+          balumfm2010@gmail.com
+        </a>
+      </div>
+      <a href="mailto:balumfm2010@gmail.com" class="btn btn-primary" style="margin: 0 auto; display:inline-flex;">
+        &#9993;&nbsp; Send a Message
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 <strong>Balanarasimhudu</strong>. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#hero">Back to Top &#8593;</a>
+      <a href="#about">About</a>
+      <a href="#journey">Timeline</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
